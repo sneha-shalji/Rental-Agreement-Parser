@@ -1,20 +1,9 @@
-from app.extraction.rule_extractor import (
-    extract_rule_based
-)
-
-from app.extraction.validator import (
-    validate_agreement
-)
-
-from app.extraction.confidence import (
-    confidence_for_value,
-    calculate_overall_confidence
-)
+from app.extraction.rule_extractor import (extract_rule_based)
+from app.extraction.validator import (validate_agreement)
+from app.extraction.confidence import (confidence_for_value,calculate_overall_confidence)
 
 
-def extract_agreement(
-    text: str
-):
+def extract_agreement(text: str):
 
     # STEP 1: RULE-BASED EXTRACTION
     

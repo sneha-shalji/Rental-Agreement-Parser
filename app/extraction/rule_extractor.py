@@ -1,15 +1,8 @@
 import re
 from typing import Optional,List
-
 from dateutil import parser as date_parser
-
-from app.models.rental_agreement import (
-    RentalAgreement,
-    Person,
-    PropertyDetails,
-    FinancialDetails,
-    AgreementPeriod,
-    AgreementTerms
+from app.models.rental_agreement import (RentalAgreement,Person,
+    PropertyDetails,FinancialDetails,AgreementPeriod,AgreementTerms
 )
 
 
@@ -129,9 +122,7 @@ def clean_text(text: str) -> str:
     return text.strip()
 
 
-# ============================================================
 # CONTEXT SEARCH
-# ============================================================
 
 def get_context(
     text: str,
@@ -198,9 +189,9 @@ def find_money_near_keywords(
     return None
 
 
-# ============================================================
+
 # FINANCIAL EXTRACTION
-# ============================================================
+
 
 def extract_monthly_rent(
     text: str

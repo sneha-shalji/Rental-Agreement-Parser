@@ -1,7 +1,5 @@
 from typing import Any, Optional,List
-
 from pydantic import BaseModel
-
 
 class FieldConfidence(BaseModel):
 

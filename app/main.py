@@ -1,12 +1,9 @@
 from pathlib import Path
 from tempfile import NamedTemporaryFile
-
 from fastapi import FastAPI, File, UploadFile, HTTPException
-
 from app.ocr.pdf_ocr import (
     extract_document_from_scanned_pdf
 )
-
 from app.extraction.extraction_service import (
     extract_agreement
 )
