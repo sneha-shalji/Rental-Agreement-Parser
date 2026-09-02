@@ -1,4 +1,6 @@
-from app.extraction.rule_extractor import build_rule_based_agreement
+from app.extraction.rule_extractor import (
+    extract_rule_based
+)
 
 
 sample_text = """
@@ -32,13 +34,13 @@ prior written notice.
 """
 
 
-agreement = build_rule_based_agreement(
+result = extract_rule_based(
     sample_text
 )
 
 
 print(
-    agreement.model_dump_json(
+    result.model_dump_json(
         indent=2
     )
 )

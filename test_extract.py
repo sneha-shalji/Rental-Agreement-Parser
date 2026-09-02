@@ -1,5 +1,5 @@
-from app.llm.extractor import (
-    extract_with_llm
+from app.extraction.extraction_service import (
+    extract_agreement
 )
 
 
@@ -34,15 +34,40 @@ prior written notice.
 """
 
 
-result = extract_with_llm(
+result = extract_agreement(
     sample_text
 )
 
 
-print("\n========== FINAL RESULT ==========\n")
+print("\n================ AGREEMENT ================\n")
 
 print(
-     result.model_dump_json(
+    result["agreement"].model_dump_json(
         indent=2
     )
+)
+
+
+print("\n================ CONFIDENCE ================\n")
+
+for field, score in result[
+    "field_confidence"
+].items():
+
+    print(
+        f"{field}: {score}"
+    )
+
+
+print("\n================ OVERALL ================\n")
+
+print(
+    result["overall_confidence"]
+)
+
+
+print("\n================ VALIDATION ================\n")
+
+print(
+    result["validation"]
 )
