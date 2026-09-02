@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-multipart
+streamlit
+opencv-python
+numpy
+pillow
+pytesseract
+PyMuPDF
+pydantic
+ollama
+python-dateutil
+regex
