@@ -3,38 +3,22 @@ import numpy as np
 
 
 def load_image(image_path: str):
-    """
-    Load an image from disk.
-    """
 
     image = cv2.imread(image_path)
 
     if image is None:
         raise ValueError(
-            f"Unable to read image: {image_path}"
-        )
+            f"Unable to read image: {image_path}")
 
     return image
 
 
 def convert_to_grayscale(image):
-    """
-    Convert BGR image to grayscale.
-    """
 
-    return cv2.cvtColor(
-        image,
-        cv2.COLOR_BGR2GRAY
-    )
+    return cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
 
 
-def upscale_image(
-    image,
-    scale: float = 2.0
-):
-    """
-    Upscale image using cubic interpolation.
-    """
+def upscale_image(image,scale: float = 2.0):
 
     return cv2.resize(
         image,
@@ -129,7 +113,7 @@ def deskew_image(image):
 
 def threshold_image(image):
     """
-    Convert grayscale image into a binary document image.
+    Converting grayscale image into a binary document image.
     """
 
     return cv2.adaptiveThreshold(
@@ -147,16 +131,9 @@ def morphological_cleanup(image):
     Remove small noise and improve text structure.
     """
 
-    kernel = cv2.getStructuringElement(
-        cv2.MORPH_RECT,
-        (2, 2)
-    )
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT,(2, 2))
 
-    cleaned = cv2.morphologyEx(
-        image,
-        cv2.MORPH_OPEN,
-        kernel
-    )
+    cleaned = cv2.morphologyEx(image,cv2.MORPH_OPEN,kernel)
 
     return cleaned
 
@@ -177,33 +154,20 @@ def preprocess_image(
 
     resized = upscale_image(
         gray,
-        scale=2.0
-    )
+        scale=2.0)
 
     enhanced = enhance_contrast(
-        resized
-    )
+        resized)
 
-    denoised = denoise_image(
-        enhanced
-    )
+    denoised = denoise_image(enhanced)
 
-    deskewed = deskew_image(
-        denoised
-    )
+    deskewed = deskew_image(denoised)
 
-    thresholded = threshold_image(
-        deskewed
-    )
+    thresholded = threshold_image(deskewed)
 
-    cleaned = morphological_cleanup(
-        thresholded
-    )
+    cleaned = morphological_cleanup(thresholded)
 
     if output_path:
-        cv2.imwrite(
-            output_path,
-            cleaned
-        )
+        cv2.imwrite(output_path,cleaned)
 
     return cleaned

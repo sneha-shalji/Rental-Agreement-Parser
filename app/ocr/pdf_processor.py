@@ -2,9 +2,6 @@ import fitz
 from pathlib import Path
 
 def get_pdf_page_count(pdf_path: str) -> int:
-    """
-    Return the number of pages in a PDF.
-    """
 
     document = fitz.open(pdf_path)
 
@@ -15,9 +12,7 @@ def get_pdf_page_count(pdf_path: str) -> int:
 
 
 def extract_text_from_pdf(pdf_path: str) -> str:
-    """
-    Extract embedded text from a PDF.
-    """
+
 
     document = fitz.open(pdf_path)
 
@@ -35,10 +30,6 @@ def extract_text_from_pdf(pdf_path: str) -> str:
 
 
 def pdf_contains_text(pdf_path: str) -> bool:
-    """
-    Determine whether a PDF contains meaningful
-    embedded text.
-    """
 
     document = fitz.open(pdf_path)
 
@@ -60,9 +51,7 @@ def render_pdf_pages(
     output_dir: str = "output/pdf_pages",
     dpi: int = 300
 ):
-    """
-    Render every PDF page as a PNG image.
-    """
+
 
     output_path = Path(output_dir)
     output_path.mkdir(
